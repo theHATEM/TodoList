@@ -13,7 +13,7 @@ Route::get('/user', function (Request $request) {
 
 Route::get('/test', function () {
     return [
-        'message' => 'test', 
+        'message' => 'test1234', 
     ];
 }); 
 
