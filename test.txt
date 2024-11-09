@@ -1,0 +1,17 @@
+php artisan migrate:fresh
+The migrate:fresh command will drop all tables from the database and then execute the migrate command
+
+
+php artisan make:model Flight
+
+
+
+$flight = Flight::where('number', 'FR 900')->first();
+ 
+$flight->number = 'FR 456';
+ 
+$flight->refresh();
+ 
+$flight->number; // "FR 900"
+
+Don't forget "Accept: application/json" Header
