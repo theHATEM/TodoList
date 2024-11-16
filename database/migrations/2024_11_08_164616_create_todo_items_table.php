@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\TodoItem; 
+use App\Models\User; 
 
 return new class extends Migration
 {
@@ -13,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('todo_items', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete(); 
             $table->string('name');
             $table->timestamps();
         });

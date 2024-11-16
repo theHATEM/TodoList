@@ -3,6 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User; 
+
+
 
 class TodoItem extends Model
 {
@@ -11,5 +14,11 @@ class TodoItem extends Model
      *
      * @var array
      */
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'user_id'];
+
+
+    public function user() : BelongsTo 
+    {
+        $this->belongsTo(User::class); 
+    }
 }

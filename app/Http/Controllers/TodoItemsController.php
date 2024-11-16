@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\TodoItem;
+use Validator;
 
 class TodoItemsController extends Controller
 {
@@ -16,10 +17,17 @@ class TodoItemsController extends Controller
         $validatedData = $request->validate([
             "name" => "string|required|max:255", 
         ]);
+            
+        $validatedData['user_id'] = auth()->id(); 
 
         $newItem = TodoItem::create($validatedData); 
 
         return response()->json($newItem, 201); 
+
+    }
+
+    public function showAllItems() {
+        return response()->json(auth()->user()->todoItems, 200); 
     }
 
     public function show($id) {

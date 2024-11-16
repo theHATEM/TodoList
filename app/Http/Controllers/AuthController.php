@@ -1,15 +1,14 @@
 <?php
-  
+
 namespace App\Http\Controllers;
-  
+
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Validator;
-  
-  
+
 class AuthController extends Controller
 {
- 
+
     /**
      * Register a User.
      *
@@ -59,6 +58,7 @@ class AuthController extends Controller
      */
     public function me()
     {
+        // dd("auth controller"); 
         return response()->json(auth()->user());
     }
   

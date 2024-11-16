@@ -17,11 +17,13 @@ Route::get('/test', function () {
     ];
 }); 
 
+
 Route::get('/items', [TodoItemsController::class, 'getAll']);
-Route::post('/create-item', [TodoItemsController::class, 'store']); 
+Route::post('/create-item', [TodoItemsController::class, 'store'])->middleware('auth:api'); 
+Route::get('/get-items', [TodoItemsController::class, 'showAllItems'])->middleware('auth:api'); 
 Route::get('/item/{id}', [TodoItemsController::class, 'show']);
-Route::delete('/item/{id}', [TodoItemsController::class, 'deleteItem']);
-Route::put('/item/{id}', [TodoItemsController::class, 'updateItem']);
+Route::delete('/item/{id}', [TodoItemsController::class, 'deleteItem'])->middleware('auth:api');
+Route::put('/item/{id}', [TodoItemsController::class, 'updateItem'])->middleware('auth:api');
 
 
 
